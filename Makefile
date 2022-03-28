@@ -1,8 +1,5 @@
 FILENAME   = blink
-PORT       = /dev/cu.usbserial-00000000
-DEVICE     = atmega328p
-PROGRAMMER = arduino
-BAUD       = 115200
+DEVICE     = atmega16u2
 COMPILE    = avr-gcc -Wall -Os -mmcu=$(DEVICE)
 
 
