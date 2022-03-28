@@ -5,7 +5,7 @@ COMPILE    = avr-gcc -Wall -Os -mmcu=$(DEVICE)
 
 default: compile upload clean
 
-compile:
+build:
 	$(COMPILE) -c $(FILENAME).c -o $(FILENAME).o
 	$(COMPILE) -o $(FILENAME).elf $(FILENAME).o
 	avr-objcopy -j .text -j .data -O ihex $(FILENAME).elf $(FILENAME).hex 

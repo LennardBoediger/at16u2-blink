@@ -4,7 +4,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-main main(void)
+int main(void)
 {
 	DDRB |= (1 << LED_PIN); // set pin as output
     while (1) 
