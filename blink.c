@@ -3,13 +3,22 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "LUFA/Drivers/Peripheral/Serial.h"
 
 int main(void)
 {
-	DDRB |= (1 << LED_PIN); // set pin as output
-    while (1) 
-    {
-		PORTB ^= (1 << LED_PIN); // toggles  pin		
-		_delay_ms(500); // busy wait, 500ms
-    }
+	// Initialize the serial USART driver before first use, with 9600 baud (and no double-speed mode)
+    Serial_Init(9600, false);
+
+    // Send a string through the USART
+    Serial_TxString("Hello World\r\n");
+
+
+
+//	DDRB |= (1 << LED_PIN); // set pin as output
+//    while (1) 
+//    {
+//		PORTB ^= (1 << LED_PIN); // toggles  pin		
+//		_delay_ms(500); // busy wait, 500ms
+//    }
 }

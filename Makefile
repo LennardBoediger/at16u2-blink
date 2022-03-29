@@ -3,7 +3,7 @@ DEVICE     = atmega16u2
 COMPILE    = avr-gcc -Wall -Os -mmcu=$(DEVICE)
 
 
-default: compile upload clean
+default: docker-build upload
 
 build:
 	$(COMPILE) -c $(FILENAME).c -o $(FILENAME).o
@@ -12,9 +12,14 @@ build:
 	avr-size --format=avr --mcu=$(DEVICE) $(FILENAME).elf
 
 upload:
-	avrdude -v -p $(DEVICE) -c $(PROGRAMMER) -P $(PORT) -b $(BAUD) -U flash:w:$(FILENAME).hex:i
+	dfu-programmer $(DEVICE) flash $(FILENAME).hex --force
 
 clean:
 	rm $(FILENAME).o
 	rm $(FILENAME).elf
 	rm $(FILENAME).hex
+
+
+docker-build:
+	docker run -ti -v $(shell pwd):/build avr_gcc make build
+
