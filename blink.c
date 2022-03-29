@@ -11,7 +11,7 @@ int main(void)
     Serial_Init(9600, false);
 
     // Send a string through the USART
-    Serial_TxString("Hello World\r\n");
+    Serial_SendString("Hello World\r\n");
 
 
 

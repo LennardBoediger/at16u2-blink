@@ -21,5 +21,7 @@ clean:
 
 
 docker-build:
-	docker run -ti -v $(shell pwd):/build avr_gcc make build
+	docker run -ti -v $(shell pwd):/build avr_gcc make -f test.Makefile
+
+
 
